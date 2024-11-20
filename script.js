@@ -45,7 +45,7 @@
     const targetGlyphIndex = starsGroup.glyphs.findIndex(glyph => glyph.name === '✯');
     starsGroup.glyphs.splice(targetGlyphIndex, 1, {
         ...starsGroup.glyphs[targetGlyphIndex],
-        unicode: 'newUnicodeHere'
+        unicode: 'U+2022'
     });
 
     /**
@@ -55,7 +55,7 @@
     const targetWhiteSpaceIndex = groupWithId2.whiteSpaces.findIndex(whiteSpace => whiteSpace.name === 'LBL_HAIR_SPACE');
     groupWithId2.whiteSpaces.splice(targetWhiteSpaceIndex, 1, {
         ...groupWithId2.whiteSpaces[targetWhiteSpaceIndex],
-        unicode: 'U+1F600'
+        unicode: 'U+0398'
     });
 
     /**
