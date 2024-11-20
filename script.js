@@ -39,51 +39,35 @@
     window.peWhiteSpaces.groups = [...window.peWhiteSpaces.groups, newWhiteSpaceGroup];
 
     /**
-     *  Modifying existing glyphs by replacing the group
+     * Modifying existing glyphs by directly finding and modifying
      */
-    const updatedGlyphGroups = window.peGlyphs.groups.map(group => {
-        if (group.groupName === 'Stars') {
-            return {
-                ...group,
-                glyphs: group.glyphs.map(glyph => 
-                    glyph.name === '✯' ? { ...glyph, unicode: 'newUnicodeHere' } : glyph
-                ),
-            };
+    const starsGroup = window.peGlyphs.groups.find(group => group.groupName === 'Stars');
+    if (starsGroup) {
+        const targetGlyph = starsGroup.glyphs.find(glyph => glyph.name === '✯');
+        if (targetGlyph) {
+            targetGlyph.unicode = 'newUnicodeHere';
         }
-        return group;
-    });
-    window.peGlyphs.groups = updatedGlyphGroups;
+    }
 
     /**
-     * Modifying existing whitespaces unicode by replacing the group
+     * Modifying existing whitespaces unicode by directly finding and modifying
      */
-    const updatedWhiteSpaceGroups = window.peWhiteSpaces.groups.map(group => {
-        if (group.groupId === '2') {
-            return {
-                ...group,
-                whiteSpaces: group.whiteSpaces.map(whiteSpace => 
-                    whiteSpace.name === 'My custom space 1' ? { ...whiteSpace, unicode: 'newUnicodeHere' } : whiteSpace
-                ),
-            };
+    const groupWithId2 = window.peWhiteSpaces.groups.find(group => group.groupId === '2');
+    if (groupWithId2) {
+        const targetWhiteSpace = groupWithId2.whiteSpaces.find(whiteSpace => whiteSpace.name === 'My custom space 1');
+        if (targetWhiteSpace) {
+            targetWhiteSpace.unicode = 'newUnicodeHere';
         }
-        return group;
-    });
-    window.peWhiteSpaces.groups = updatedWhiteSpaceGroups;
+    }
 
     /**
-     * Modifying existing whitespaces shortcuts by replacing the group
+     * Modifying existing whitespaces shortcuts by directly finding and modifying
      */
-    const updatedShortcutGroups = window.peWhiteSpaces.groups.map(group => {
-        if (group.groupId === '2') {
-            return {
-                ...group,
-                whiteSpaces: group.whiteSpaces.map(whiteSpace => 
-                    whiteSpace.name === 'LBL_NO_BREAK_SPACE' ? { ...whiteSpace, shortcut: 'alt+mod+T' } : whiteSpace
-                ),
-            };
+    if (groupWithId2) {
+        const targetShortcut = groupWithId2.whiteSpaces.find(whiteSpace => whiteSpace.name === 'LBL_NO_BREAK_SPACE');
+        if (targetShortcut) {
+            targetShortcut.shortcut = 'alt+mod+T';
         }
-        return group;
-    });
-    window.peWhiteSpaces.groups = updatedShortcutGroups;
+    }
 
 })();
