@@ -1,7 +1,7 @@
 (function() {
 
     /**
-     * Add a new group to the top of print editor glyps panel 
+     * Add a new group to the top of print editor glyphs panel 
     */
     const newGlyphGroup = {
         groupName: 'Stars',
@@ -39,23 +39,32 @@
     window.peWhiteSpaces.groups = [...window.peWhiteSpaces.groups, newWhiteSpaceGroup];
 
     /**
-     * Modifying existing glyphs by directly finding and modifying
+     * Modifying existing glyphs by removing and replacing the item
      */
     const starsGroup = window.peGlyphs.groups.find(group => group.groupName === 'Stars');
-    const targetGlyph = starsGroup.glyphs.find(glyph => glyph.name === '✯');
-    targetGlyph.unicode = 'newUnicodeHere';
+    const targetGlyphIndex = starsGroup.glyphs.findIndex(glyph => glyph.name === '✯');
+    starsGroup.glyphs.splice(targetGlyphIndex, 1, {
+        ...starsGroup.glyphs[targetGlyphIndex],
+        unicode: 'newUnicodeHere'
+    });
 
     /**
-     * Modifying existing whitespaces unicode by directly finding and modifying
+     * Modifying existing whitespaces unicode by removing and replacing the item
      */
     const groupWithId2 = window.peWhiteSpaces.groups.find(group => group.groupId === '2');
-    const targetWhiteSpace = groupWithId2.whiteSpaces.find(whiteSpace => whiteSpace.name === 'My custom space 1');
-    targetWhiteSpace.unicode = 'newUnicodeHere';
+    const targetWhiteSpaceIndex = groupWithId2.whiteSpaces.findIndex(whiteSpace => whiteSpace.name === 'My custom space 1');
+    groupWithId2.whiteSpaces.splice(targetWhiteSpaceIndex, 1, {
+        ...groupWithId2.whiteSpaces[targetWhiteSpaceIndex],
+        unicode: 'newUnicodeHere'
+    });
 
     /**
-     * Modifying existing whitespaces shortcuts by directly finding and modifying
+     * Modifying existing whitespaces shortcuts by removing and replacing the item
      */
-    const targetShortcut = groupWithId2.whiteSpaces.find(whiteSpace => whiteSpace.name === 'LBL_NO_BREAK_SPACE');
-    targetShortcut.shortcut = 'alt+mod+T';
+    const targetShortcutIndex = groupWithId2.whiteSpaces.findIndex(whiteSpace => whiteSpace.name === 'LBL_NO_BREAK_SPACE');
+    groupWithId2.whiteSpaces.splice(targetShortcutIndex, 1, {
+        ...groupWithId2.whiteSpaces[targetShortcutIndex],
+        shortcut: 'alt+mod+T'
+    });
 
 })();
