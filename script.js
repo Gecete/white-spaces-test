@@ -52,10 +52,10 @@
      * Modifying existing whitespaces unicode by removing and replacing the item
      */
     const groupWithId2 = window.peWhiteSpaces.groups.find(group => group.groupId === '2');
-    const targetWhiteSpaceIndex = groupWithId2.whiteSpaces.findIndex(whiteSpace => whiteSpace.name === 'My custom space 1');
+    const targetWhiteSpaceIndex = groupWithId2.whiteSpaces.findIndex(whiteSpace => whiteSpace.name === 'LBL_HAIR_SPACE');
     groupWithId2.whiteSpaces.splice(targetWhiteSpaceIndex, 1, {
         ...groupWithId2.whiteSpaces[targetWhiteSpaceIndex],
-        unicode: 'newUnicodeHere'
+        unicode: 'U+1F600'
     });
 
     /**
