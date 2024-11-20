@@ -61,6 +61,7 @@
     /**
      * Modifying existing whitespaces shortcuts by removing and replacing the item
      */
+    const groupWithId2 = window.peWhiteSpaces.groups.find(group => group.groupId === '2');
     const targetShortcutIndex = groupWithId2.whiteSpaces.findIndex(whiteSpace => whiteSpace.name === 'LBL_NO_BREAK_SPACE');
     groupWithId2.whiteSpaces.splice(targetShortcutIndex, 1, {
         ...groupWithId2.whiteSpaces[targetShortcutIndex],
