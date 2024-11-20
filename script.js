@@ -41,20 +41,20 @@
     /**
      * Modifying existing glyphs by removing and replacing the item
      */
-    const starsGroup = window.peGlyphs.groups.find(group => group.groupName === 'Stars');
-    const targetGlyphIndex = starsGroup.glyphs.findIndex(glyph => glyph.name === '✯');
+    const starsGroup = window.peGlyphs.groups.find(group => group.groupName === 'Currency');
+    const targetGlyphIndex = starsGroup.glyphs.findIndex(glyph => glyph.name === 'Euro');
     starsGroup.glyphs.splice(targetGlyphIndex, 1, {
         ...starsGroup.glyphs[targetGlyphIndex],
-        unicode: 'U+2022'
+        unicode: 'U+03BE'
     });
 
     /**
      * Modifying existing whitespaces unicode by removing and replacing the item
      */
-    const groupWithId2 = window.peWhiteSpaces.groups.find(group => group.groupId === '2');
-    const targetWhiteSpaceIndex = groupWithId2.whiteSpaces.findIndex(whiteSpace => whiteSpace.name === 'LBL_HAIR_SPACE');
+    const groupWithId3 = window.peWhiteSpaces.groups.find(group => group.groupId === '3');
+    const targetWhiteSpaceIndex = groupWithId3.whiteSpaces.findIndex(whiteSpace => whiteSpace.name === 'LBL_HAIR_SPACE');
     groupWithId2.whiteSpaces.splice(targetWhiteSpaceIndex, 1, {
-        ...groupWithId2.whiteSpaces[targetWhiteSpaceIndex],
+        ...groupWithId3.whiteSpaces[targetWhiteSpaceIndex],
         unicode: 'U+0398'
     });
 
