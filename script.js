@@ -53,7 +53,7 @@
      */
     const groupWithId3 = window.peWhiteSpaces.groups.find(group => group.groupId === '3');
     const targetWhiteSpaceIndex = groupWithId3.whiteSpaces.findIndex(whiteSpace => whiteSpace.name === 'LBL_HAIR_SPACE');
-    groupWithId2.whiteSpaces.splice(targetWhiteSpaceIndex, 1, {
+    groupWithId3.whiteSpaces.splice(targetWhiteSpaceIndex, 1, {
         ...groupWithId3.whiteSpaces[targetWhiteSpaceIndex],
         unicode: 'U+0398'
     });
