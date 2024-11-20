@@ -3,7 +3,7 @@
     /**
      * Add a new group to the top of print editor glyps panel 
     */
-    window.peGlyphs.groups.unshift ({
+    const newGlyphGroup = {
         groupName: 'Stars',
         glyphs: [            
             {
@@ -23,34 +23,67 @@
                 unicode: 'U+272F',
             }
         ],
-    });
+    };
+    window.peGlyphs.groups = [newGlyphGroup, ...window.peGlyphs.groups];
 
     /**
-    * Add a new group to the bottom of print editor whitespaces panel 
+     * Add a new group to the bottom of print editor whitespaces panel 
     */
-    window.peWhiteSpaces.groups.push ({    
-            groupId: '5',
-            whiteSpaces: [
-                { name: 'My custom space 1', unicode: 'U+0009' },
-                { name: 'My custom space 2', unicode: 'U+0009' },
-            ],        
+    const newWhiteSpaceGroup = {
+        groupId: '5',
+        whiteSpaces: [
+            { name: 'My custom space 1', unicode: 'U+0009' },
+            { name: 'My custom space 2', unicode: 'U+0009' },
+        ],
+    };
+    window.peWhiteSpaces.groups = [...window.peWhiteSpaces.groups, newWhiteSpaceGroup];
+
+    /**
+     *  Modifying existing glyphs by replacing the group
+     */
+    const updatedGlyphGroups = window.peGlyphs.groups.map(group => {
+        if (group.groupName === 'Stars') {
+            return {
+                ...group,
+                glyphs: group.glyphs.map(glyph => 
+                    glyph.name === '✯' ? { ...glyph, unicode: 'newUnicodeHere' } : glyph
+                ),
+            };
+        }
+        return group;
     });
+    window.peGlyphs.groups = updatedGlyphGroups;
 
     /**
-     *  Modifying existing glyphs
+     * Modifying existing whitespaces unicode by replacing the group
      */
-    window.peGlyphs.groups.find((group)=> group.groupName === 'Stars')
-    .glyphs.find((glyph)=> glyph.name === '✯').unicode = 'newUnicodeHere';
+    const updatedWhiteSpaceGroups = window.peWhiteSpaces.groups.map(group => {
+        if (group.groupId === '2') {
+            return {
+                ...group,
+                whiteSpaces: group.whiteSpaces.map(whiteSpace => 
+                    whiteSpace.name === 'My custom space 1' ? { ...whiteSpace, unicode: 'newUnicodeHere' } : whiteSpace
+                ),
+            };
+        }
+        return group;
+    });
+    window.peWhiteSpaces.groups = updatedWhiteSpaceGroups;
 
     /**
-     * Modifying existing whitespaces unicode
+     * Modifying existing whitespaces shortcuts by replacing the group
      */
-    window.peWhiteSpaces.groups.find((group)=> group.groupId === '2')
-    .whiteSpaces.find((whiteSpace)=> whiteSpace.name === 'My custom space 1').unicode = 'newUnicodeHere';
+    const updatedShortcutGroups = window.peWhiteSpaces.groups.map(group => {
+        if (group.groupId === '2') {
+            return {
+                ...group,
+                whiteSpaces: group.whiteSpaces.map(whiteSpace => 
+                    whiteSpace.name === 'LBL_NO_BREAK_SPACE' ? { ...whiteSpace, shortcut: 'alt+mod+T' } : whiteSpace
+                ),
+            };
+        }
+        return group;
+    });
+    window.peWhiteSpaces.groups = updatedShortcutGroups;
 
-    /**
-     * Modifying existing whitespaces shortcuts
-     */
-    window.peWhiteSpaces.groups.find((group)=> group.groupId === '2')
-   .whiteSpaces.find((whiteSpace)=> whiteSpace.name === 'LBL_NO_BREAK_SPACE').shortcut = 'alt+mod+T';
-})();   
+})();
