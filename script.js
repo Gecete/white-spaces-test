@@ -45,7 +45,7 @@
     const targetGlyphIndex = starsGroup.glyphs.findIndex(glyph => glyph.name === 'Euro');
     starsGroup.glyphs.splice(targetGlyphIndex, 1, {
         ...starsGroup.glyphs[targetGlyphIndex],
-        unicode: 'U+03BE'
+        unicode: 'U+24BA'
     });
 
     /**
